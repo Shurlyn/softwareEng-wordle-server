@@ -21,10 +21,10 @@ const guess = (request, response) => {
             result.push({letter: userGuess[x], status: 1});
         }
         else if(word.includes(userGuess[x])){
-            result.push({letter: userGuess[x], status: -1});
+            result.push({letter: userGuess[x], status: 0});
         }
         else{
-            result.push({letter: userGuess[x], status: 0});
+            result.push({letter: userGuess[x], status: -1});
         }
     }
     if(result){
