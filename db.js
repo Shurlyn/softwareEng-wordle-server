@@ -11,23 +11,31 @@ const guess = (request, response) => {
     const userGuess = request.body.guess;
     guessArray = userGuess.split("");
 
-    var result = []
+    var result = [];
 
     for(let x = 0; x < 5; x++){
         // includes()
 
         // that word and in that index
         if(word[x] == userGuess[x]){
-            result.append({letter: userGuess[x], status: 1});
+            result.push({letter: userGuess[x], status: 1});
         }
         else if(word.includes(userGuess[x])){
-            result.append({letter: userGuess[x], status: -1});
+            result.push({letter: userGuess[x], status: -1});
         }
         else{
-            result.append({letter: userGuess[x], status: 0});
+            result.push({letter: userGuess[x], status: 0});
         }
     }
+    if(result){
+        response.json(result);
+    }
+    else{
+        response.sendstatus(404);
+    }
 };
+
+
 
 module.exports = {
     guess
