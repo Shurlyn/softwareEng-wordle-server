@@ -42,3 +42,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   res.json({ info: "wordle postman game" });
 });
+
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
