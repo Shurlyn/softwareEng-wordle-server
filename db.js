@@ -17,13 +17,14 @@ const guess = (request, response) => {
         // includes()
 
         // that word and in that index
-        if (word.includes(userGuess[x], x)) {
-          result.append("Green")
-        } else if (word.includes(userGuess[x])) { // if it's just in the word
-          result.append("Yellow")
-        } else { // if it's not
-          result.append("Gray")
+        if(word[x] == userGuess[x]){
+            result.append({letter: userGuess[x], status: 1});
         }
-
+        else if(word.includes(userGuess[x])){
+            result.append({letter: userGuess[x], status: -1});
+        }
+        else{
+            result.append({letter: userGuess[x], status: 0});
+        }
     }
 };
