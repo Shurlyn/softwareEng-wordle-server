@@ -28,3 +28,8 @@ const guess = (request, response) => {
         }
     }
 };
+
+module.exports = {
+    guess
+  };
+  
