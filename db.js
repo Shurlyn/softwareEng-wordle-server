@@ -10,7 +10,6 @@ const word = ["c", "h", "e", "c", "k"];
 const guess = (request, response) => {
     const userGuess = request.body.guess;
     guessArray = userGuess.split("");
-
     var result = [];
 
     for(let x = 0; x < 5; x++){
@@ -18,13 +17,13 @@ const guess = (request, response) => {
 
         // that word and in that index
         if(word[x] == userGuess[x]){
-            result.push({letter: userGuess[x], status: 1});
+            result.push("correct");
         }
         else if(word.includes(userGuess[x])){
-            result.push({letter: userGuess[x], status: -1});
+            result.push("present");
         }
         else{
-            result.push({letter: userGuess[x], status: 0});
+            result.push("absent");
         }
     }
     if(result){
@@ -34,6 +33,16 @@ const guess = (request, response) => {
         response.sendstatus(404);
     }
 };
+/*
+const valid = (request, response) => {
+    const userWord = request.body.guess;
+    
+    const query = "SELECT * FROM words WHERE word = ?";
+    db.get(query, [userWord], (error, result) => {
+        if()
+    })
+}
+*/
 
 
 
