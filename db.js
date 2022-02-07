@@ -33,20 +33,29 @@ const guess = (request, response) => {
         response.sendstatus(404);
     }
 };
-/*
+
 const valid = (request, response) => {
-    const userWord = request.body.guess;
-    
-    const query = "SELECT * FROM words WHERE word = ?";
+    const userWord = request.body.guess;   
+    const query = "SELECT * FROM words WHERE name = ?";
     db.get(query, [userWord], (error, result) => {
-        if()
-    })
+        if(error){
+            console.error("Error trying to find word in words.db");
+            response.status(500).json({ error: error.message });
+        }
+        if(result){
+            response.json(1);   
+        }
+        else{
+            response.json(0);
+        }
+    });
 }
-*/
+
 
 
 
 module.exports = {
-    guess
+    guess,
+    valid
   };
   
