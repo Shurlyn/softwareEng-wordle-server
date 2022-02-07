@@ -9,6 +9,14 @@ const word = ["c", "h", "e", "c", "k"];
 
 const guess = (request, response) => {
     const userGuess = request.body.guess;
+
+    let dayNumber = 0;
+    const query = `SELECT word FROM today LIMIT 1 OFFSET ?`
+
+    db.get(query, [dayNumber], (error, result) => {
+        // get the word from today.
+    })
+
     guessArray = userGuess.split("");
     var result = [];
 
@@ -26,12 +34,15 @@ const guess = (request, response) => {
             result.push("absent");
         }
     }
+
     if(result){
         response.json(result);
     }
     else{
         response.sendstatus(404);
     }
+
+
 };
 
 const valid = (request, response) => {
